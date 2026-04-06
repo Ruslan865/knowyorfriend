@@ -1,3 +1,4 @@
+
 [app]
 title = KnovYourFrend
 package.name = knovyourfrend
@@ -5,7 +6,7 @@ package.domain = org.example
 source.dir = .
 source.include_exts = py,mp4,mp3
 version = 0.1
-requirements = python3,python,kivy
+requirements = python3,cython,kivy
 orientation = portrait
 fullscreen = 0
 android.api = 33
