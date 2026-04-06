@@ -5,14 +5,13 @@ package.domain = org.example
 source.dir = .
 source.include_exts = py,mp4,mp3
 version = 0.1
-requirements = python3,kivy
+requirements = python3,cython,kivy
 orientation = portrait
 fullscreen = 0
 android.api = 33
 android.minapi = 21
-android.sdk = 33
 android.ndk = 25b
-android.arch = arm64-v8a
+android.archs = arm64-v8a
 presplash.filename = assets/angel.mp4
 icon.filename = assets/demon.mp4
 
