@@ -38,5 +38,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: KnovYourFrend-APK
+          name: KnowYourFriend-APK
           path: bin/*.apk
