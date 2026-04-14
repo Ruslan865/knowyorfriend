@@ -14,16 +14,16 @@ requirements = kivy,cython
 orientation = portrait
 fullscreen = 0
 
-# 🔥 CRITICAL STABLE ANDROID CONFIG
+# 🔥 STABLE ANDROID CONFIG (IMPORTANT)
 android.api = 34
 android.minapi = 21
 android.ndk = 25c
 android.archs = arm64-v8a
 
-# 🔥 FORCE STABLE BUILD-TOOLS (AVOID 37)
+# 🔥 FORCE STABLE BUILD TOOLS
 android.build_tools_version = 34.0.0
 
-# UI assets (ONLY images, NOT mp4)
+# assets MUST be images
 presplash.filename = assets/angel.png
 icon.filename = assets/demon.png
 
