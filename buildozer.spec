@@ -20,9 +20,6 @@ android.minapi = 21
 android.ndk = 25c
 android.archs = arm64-v8a
 
-# ⚠️ IMPORTANT: DO NOT FORCE BUILD TOOLS HERE
-# (Buildozer sometimes ignores this and pulls 37 anyway)
-
 presplash.filename = assets/angel.png
 icon.filename = assets/demon.png
 
