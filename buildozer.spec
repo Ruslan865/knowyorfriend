@@ -14,16 +14,15 @@ requirements = kivy,cython
 orientation = portrait
 fullscreen = 0
 
-# 🔥 ANDROID STABLE LOCK
+# 🔥 ANDROID TARGET (STABLE)
 android.api = 34
 android.minapi = 21
 android.ndk = 25c
 android.archs = arm64-v8a
 
-# 🔥 FORCE STABLE BUILD TOOLS (BLOCKS 37 ISSUE)
-android.build_tools_version = 34.0.0
+# ⚠️ IMPORTANT: DO NOT FORCE BUILD TOOLS HERE
+# (Buildozer sometimes ignores this and pulls 37 anyway)
 
-# UI assets (must be images, NOT mp4)
 presplash.filename = assets/angel.png
 icon.filename = assets/demon.png
 
