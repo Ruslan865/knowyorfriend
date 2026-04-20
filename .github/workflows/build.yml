@@ -1,9 +1,13 @@
+
 name: Build APK
 
 on:
   push:
     branches:
       - main
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
@@ -12,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           sudo apt update
           sudo apt install -y python3-pip build-essential git zip unzip openjdk-17-jdk
@@ -22,27 +26,32 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install build tools
+      - name: Install tools
         run: |
           pip install --upgrade pip
           pip install buildozer cython kivy
 
-      # 🔥 CRITICAL: CLEAN EVERYTHING
+      # 🔥 CLEAN EVERYTHING
       - name: Clean environment
         run: |
-          rm -rf .buildozer
-          rm -rf ~/.buildozer
-          rm -rf ~/.android
+          rm -rf .buildozer ~/.buildozer ~/.android
 
-      # 🔥 CRITICAL: LICENSE FIX
-      - name: Force accept licenses
+      # 🔥 BUILD START (SDK yaradılır)
+      - name: Initialize Buildozer (creates SDK)
         run: |
-          mkdir -p ~/.android
-          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > ~/.android/android-sdk-license
-          echo "84831b9409646a918e30573bab4c9c91346d8abd" >> ~/.android/android-sdk-license
-          echo "d975f751698a77b662f1254ddbeed3901e976f5a" >> ~/.android/android-sdk-license
+          buildozer android debug || true
 
-      # 🔥 BUILD
+      # 🔥 CRITICAL FIX: WRITE LICENSE TO CORRECT PATH
+      - name: Fix licenses INSIDE Buildozer SDK
+        run: |
+          SDK_PATH="$HOME/.buildozer/android/platform/android-sdk"
+          mkdir -p $SDK_PATH/licenses
+
+          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > $SDK_PATH/licenses/android-sdk-license
+          echo "84831b9409646a918e30573bab4c9c91346d8abd" >> $SDK_PATH/licenses/android-sdk-license
+          echo "d975f751698a77b662f1254ddbeed3901e976f5a" >> $SDK_PATH/licenses/android-sdk-license
+
+      # 🔥 BUILD AGAIN (ARTIQ İŞLƏYƏCƏK)
       - name: Build APK
         run: buildozer -v android debug
 
@@ -51,4 +60,3 @@ jobs:
         with:
           name: apk
           path: bin/*.apk
-
