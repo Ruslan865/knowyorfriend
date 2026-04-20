@@ -14,7 +14,7 @@ requirements = kivy,cython
 orientation = portrait
 fullscreen = 0
 
-# 🔥 ANDROID TARGET (STABLE)
+# Stabil Android config
 android.api = 34
 android.minapi = 21
 android.ndk = 25c
